@@ -40,4 +40,4 @@ The application leverages the Chiliz blockchain, which is optimized for creating
 
 ## Bonus
 
-[Test Yourself] (https://bugraayan.com/chz_test.html)
+Test it: https://bugraayan.com/chz_test.html
