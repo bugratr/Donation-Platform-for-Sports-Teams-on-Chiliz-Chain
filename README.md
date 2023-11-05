@@ -19,5 +19,5 @@ The application leverages the Chiliz blockchain, which is optimized for creating
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/your-username/donation-platform.git
-   cd donation-platform
+   git clone https://github.com/bugratr/Donation-Platform-for-Sports-Teams-on-Chiliz-Chain.git
+   cd Donation-Platform-for-Sports-Teams-on-Chiliz-Chain
