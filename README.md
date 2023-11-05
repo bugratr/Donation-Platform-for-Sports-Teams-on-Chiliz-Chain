@@ -37,4 +37,7 @@ The application leverages the Chiliz blockchain, which is optimized for creating
    cd Donation-Platform-for-Sports-Teams-on-Chiliz-Chain
 
 
-   [Test Yourself] (https://bugraayan.com/chz_test.html)
+
+## Bonus
+
+[Test Yourself] (https://bugraayan.com/chz_test.html)
