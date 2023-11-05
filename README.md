@@ -3,6 +3,8 @@
 ## Overview
 This project is a donation platform designed to allow sports fans to financially support their favorite teams and news platforms directly. Built on the Chiliz Spicy Testnet, an Ethereum-compatible blockchain, the platform ensures a seamless donation experience. When a donation is made, 95% of the funds go to the selected sports team's wallet, while 5% is sent to the news platform's wallet as a commission.
 
+Integration Note: You can integrate this donation box seamlessly at the end of news articles on your website, providing a convenient way for readers to show their support.
+
 ![alt text](https://github.com/bugratr/Donation-Platform-for-Sports-Teams-on-Chiliz-Chain/blob/main/689D012B-6991-4E25-A875-EA7684FCFBD2.jpeg?raw=true)
 
 ![alt text](https://github.com/bugratr/Donation-Platform-for-Sports-Teams-on-Chiliz-Chain/blob/main/A58B8E42-27E4-4BCC-8BCC-C735F32ED51D.jpeg?raw=true)
