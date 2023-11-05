@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation DApp</title>
+ <style>
+        /* style.css */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        }
+        button {
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #1b95e0;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        select, input {
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+  <div class="container">
+        <h2>Donate to Your Team</h2>
+        <label for="token">Choose a token:</label>
+        <select id="token">
+            <option value="CHZ">CHZ</option>
+            <option value="TrabzonsporToken">Trabzonspor Token</option>
+            <option value="GalatasarayToken">Galatasaray Token</option>
+        </select>
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" placeholder="Enter amount">
+        <button onclick="donate()">Donate</button>
+        <p id="status"></p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.3/dist/web3.min.js"></script>
+    <script>
+        // app.js
+        const contractAddress = "0x..."; // Replace with your contract address
+        const abi = [...]; // Replace with your contract ABI
+
+        async function donate() {
+            const token = document.getElementById('token').value;
+            const amount = document.getElementById('amount').value;
+            const status = document.getElementById('status');
+
+            // Validate input
+            if (!amount || amount <= 0) {
+                alert('Please enter a valid amount.');
+                return;
+            }
+
+            // Initialize web3
+            if (window.ethereum) {
+                window.web3 = new Web3(window.ethereum);
+                await window.ethereum.enable();
+            } else if (window.web3) {
+                window.web3 = new Web3(window.web3.currentProvider);
+            } else {
+                alert('Non-Ethereum browser detected. Consider trying MetaMask!');
+                return;
+            }
+
+            const web3 = window.web3;
+            const accounts = await web3.eth.getAccounts();
+            const contract = new web3.eth.Contract(abi, contractAddress);
+
+            // Calculate the amount in wei
+            const amountInWei = web3.utils.toWei(amount, 'ether');
+
+            // Call the donate function from the smart contract
+            contract.methods.donate(tokenName, amountInWei)
+                .send({ from: accounts[0] })
+                .on('transactionHash', function(hash){
+                    status.innerHTML = 'Transaction submitted. Waiting for confirmation...';
+                })
+                .on('confirmation', function(confirmationNumber, receipt){
+                    status.innerHTML = 'Donation successful!';
+                })
+                .on('error', function(error){
+                    status.innerHTML = 'Error: ' + error.message;
+                });
+        }
+    </script>
+</body>
+</html>
