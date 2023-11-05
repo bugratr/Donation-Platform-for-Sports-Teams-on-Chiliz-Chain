@@ -1,0 +1,14 @@
+#app {
+    text-align: center;
+    padding: 50px;
+}
+
+#donateBtn {
+    margin: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+}
+
+#status {
+    margin-top: 20px;
+}
