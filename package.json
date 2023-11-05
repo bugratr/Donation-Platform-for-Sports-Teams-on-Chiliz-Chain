@@ -1,0 +1,22 @@
+{
+  "name": "donation-platform",
+  "version": "1.0.0",
+  "description": "A donation platform for sports teams built on Chiliz Chain",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "lite-server",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "truffle compile",
+    "migrate": "truffle migrate",
+    "deploy": "truffle exec scripts/deploy.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "web3": "^1.6.1"
+  },
+  "devDependencies": {
+    "lite-server": "^2.6.1",
+    "truffle": "^5.4.22"
+  }
+}
