@@ -33,3 +33,6 @@ The application leverages the Chiliz blockchain, which is optimized for creating
    ```bash
    git clone https://github.com/bugratr/Donation-Platform-for-Sports-Teams-on-Chiliz-Chain.git
    cd Donation-Platform-for-Sports-Teams-on-Chiliz-Chain
+
+
+   [Test Yourself] (https://bugraayan.com/chz_test.html)
