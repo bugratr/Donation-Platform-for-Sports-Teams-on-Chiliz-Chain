@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donation App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 50%;
+      margin: auto;
+      background-color: #fff;
+      padding: 20px;
+      text-align: center;
+      margin-top: 10%;
+      border-radius: 5px;
+      box-shadow: 0px 0px 10px 0px #000;
+    }
+
+    .btn-donate {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      font-size: 18px;
+      border-radius: 5px;
+    }
+
+    .btn-donate:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2>Support Your Team</h2>
+    <button class="btn-donate" id="donateButton">Donate to Your Team</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.5.3/dist/web3.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      // Check if Web3 is injected
+      if (typeof window.ethereum === 'undefined') {
+        alert('Please install MetaMask!');
+        return;
+      }
+
+      const web3 = new Web3(window.ethereum);
+      const contractAddress = 'YOUR_CONTRACT_ADDRESS';
+      const contractABI = []; // Replace with your contract ABI
+
+      // Instantiate the contract
+      const donationContract = new web3.eth.Contract(contractABI, contractAddress);
+
+      // Request account access
+      document.getElementById('donateButton').addEventListener('click', async () => {
+        try {
+          // Request account access
+          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+
+          // Call the donate function of the smart contract
+          const amountToDonate = web3.utils.toWei('0.1', 'ether'); // for example 0.1 ether
+          await donationContract.methods.donate().send({ from: accounts[0], value: amountToDonate });
+
+          alert('Donation successful!');
+        } catch (error) {
+          console.error(error);
+          alert('An error occurred during the transaction.');
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
